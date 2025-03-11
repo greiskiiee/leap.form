@@ -2,20 +2,46 @@
 import { Input } from "./components/Input";
 import { Button } from "./components/Button";
 import { use, useState } from "react";
+import { Step1 } from "./components/Step1";
+import { handleClientScriptLoad } from "next/script";
+import { Step2 } from "./components/Step2";
+import { Step3 } from "./components/Step3";
 
 export default function Home() {
   let [count, setCount] = useState(1);
 
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
+    email: "",
+    phone: "",
+    password: "",
+    birthDate: "",
+    pro: "",
+  });
+
   const handleBtnPrev = () => {
-    setCount(count--);
+    setCount((prevCount) => prevCount - 1);
   };
 
   const handleBtnNext = () => {
     if (count >= 3) {
       return;
     }
-    setCount(count++);
+
+    setCount((prevCount) => prevCount + 1);
   };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  console.log(formData);
 
   return (
     <div className="w-screen h-screen flex justify-center items-center bg-[#F4F4F4]">
@@ -31,26 +57,9 @@ export default function Home() {
               Please provide all current information accurately.
             </p>
           </div>
-          <div className="w-full h-fit flex flex-col gap-[12px]">
-            <Input
-              formName="First name"
-              formType="text"
-              required={true}
-              pattern="[A-Za-z]"
-            />
-            <Input
-              formName="Last name"
-              formType="text"
-              required={true}
-              pattern="[A-Za-z]"
-            />
-            <Input
-              formName="Username"
-              formType="text"
-              required={false}
-              pattern="[A-Za-z]"
-            />
-          </div>
+          {count == 1 ? <Step1 handleChange={handleChange} /> : null}
+          {count == 2 ? <Step2 handleChange={handleChange} /> : null}
+          {count == 3 ? <Step3 handleChange={handleChange} /> : null}
         </div>
 
         {/* button container */}
