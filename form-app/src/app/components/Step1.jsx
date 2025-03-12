@@ -11,6 +11,7 @@ export const Step1 = ({ handleChange }) => {
         required={true}
         pattern="[A-Za-z]"
         name="firstName"
+        minLength={2}
         setInputValue={handleChange}
       />
       <Input
@@ -18,6 +19,7 @@ export const Step1 = ({ handleChange }) => {
         formType="text"
         required={true}
         name="lastName"
+        minLength={1}
         setInputValue={handleChange}
         pattern="[A-Za-z]"
       />
@@ -26,6 +28,7 @@ export const Step1 = ({ handleChange }) => {
         formType="text"
         required={true}
         name="userName"
+        minLength={4}
         setInputValue={handleChange}
         pattern="[A-Za-z]"
       />

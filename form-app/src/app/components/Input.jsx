@@ -7,9 +7,10 @@ export const Input = ({
   pattern,
   name,
   setInputValue,
+  minLength,
 }) => {
   return (
-    <div className="w-full h-[68px] box-border flex flex-col justify-between items-start">
+    <div className="w-full h-fit box-border flex flex-col justify-between items-start gap-1">
       <label
         htmlFor={formName}
         className="text-[#334155] text-[14px] inter font-[600]"
@@ -21,12 +22,13 @@ export const Input = ({
         <input
           onChange={setInputValue}
           type={formType}
-          id={formType}
+          id={name}
           name={name}
           placeholder="Placeholder"
           className="w-full outline-0"
           required={required}
           pattern={pattern}
+          minLength={minLength}
         />
       </div>
     </div>

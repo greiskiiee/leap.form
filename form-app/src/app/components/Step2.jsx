@@ -7,9 +7,9 @@ export const Step2 = ({ handleChange }) => {
     <div className="w-full h-fit flex flex-col gap-[12px]">
       <Input
         formName="Email"
-        formType="text"
+        formType="email"
         required={true}
-        pattern="[A-Za-z]@gmail.com"
+        pattern="[A-Za-z]@"
         name="email"
         setInputValue={handleChange}
       />
@@ -20,6 +20,7 @@ export const Step2 = ({ handleChange }) => {
         name="phone"
         setInputValue={handleChange}
         pattern="[A-Za-z]"
+        minLength={8}
       />
       <Input
         formName="Password"
@@ -27,14 +28,16 @@ export const Step2 = ({ handleChange }) => {
         required={true}
         name="password"
         setInputValue={handleChange}
+        minLength={8}
         pattern="[A-Za-z]"
       />
       <Input
         formName="Confirm Password"
         formType="password"
         required={true}
-        name="password"
+        name="confirmpass"
         setInputValue={handleChange}
+        minLength={8}
         pattern="[A-Za-z]"
       />
     </div>

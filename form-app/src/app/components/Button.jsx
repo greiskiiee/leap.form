@@ -9,6 +9,7 @@ export const Button = ({ handleBtnNext, handleBtnPrev, count }) => {
       {count == 1 ? (
         <div className="w-full h-fit flex justify-between items-center gap-[4px]">
           <button
+            type="submit"
             onClick={handleBtnNext}
             className="w-full h-fit box-border py-[10px] px-[12px] bg-[#121316] rounded-[6px] text-white flex justify-center items-center gap-[4px] inter text-[16px]"
           >
@@ -26,6 +27,7 @@ export const Button = ({ handleBtnNext, handleBtnPrev, count }) => {
             Back
           </button>
           <button
+            type="submit"
             onClick={handleBtnNext}
             className="w-2/3 h-fit box-border py-[10px] px-[12px] bg-[#121316] rounded-[6px] text-white flex justify-center items-center inter text-[16px] "
           >
