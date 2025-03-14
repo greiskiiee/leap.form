@@ -13,6 +13,8 @@ export const Step1 = ({ handleChange }) => {
         name="firstName"
         minLength={2}
         setInputValue={handleChange}
+        error={true}
+        errMsg="First name cannot contain special characters or numbers."
       />
       <Input
         formName="Last name"
@@ -22,6 +24,7 @@ export const Step1 = ({ handleChange }) => {
         minLength={1}
         setInputValue={handleChange}
         pattern="[A-Za-z]"
+        errMsg="First name cannot contain special characters or numbers."
       />
       <Input
         formName="Username"

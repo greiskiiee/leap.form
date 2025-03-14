@@ -8,20 +8,24 @@ import { Step3 } from "./components/Step3";
 
 export default function Home() {
   let [count, setCount] = useState(0);
+  const [isFilled, setPage] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     userName: "",
-    phone: "",
-    email: "",
-    birthDate: "",
-    pro: "",
-    password: "",
-    confirmpass: "",
+    phone: "d",
+    email: "d",
+    birthDate: "d",
+    pro: "d",
+    password: "d",
+    confirmpass: "d",
   });
 
   const handleBtnPrev = () => {
+    if (count == 1) {
+      return;
+    }
     setCount((prevCount) => prevCount - 1);
   };
 
@@ -30,9 +34,32 @@ export default function Home() {
       return;
     }
 
-    if (Object.values(formData).includes("")) {
-      console.log("fill");
+    if (Object.values(formData).some((val) => val.trim() === "")) {
+      console.log("Fill the form");
     } else {
+      if (!/^[A-Za-z]+$/.test(formData.firstName)) {
+        console.log("First name cannot contain special characters or numbers.");
+      }
+
+      if (!/^[A-Za-z]+$/.test(formData.lastName)) {
+        console.log("First name cannot contain special characters or numbers.");
+      }
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+        console.log("Please provide a valid email address.");
+      }
+
+      if (!/^\+?\d{8}$/.test(formData.email)) {
+        console.log("Please provide a valid phone number.");
+      }
+
+      if (formData.password.length < 6) {
+        console.log("Password length must be at least 6 characters");
+      }
+
+      if (formData.password !== formData.confirmpass) {
+        console.log("Password does not match.");
+      }
       setCount((prevCount) => prevCount + 1);
     }
   };
@@ -56,7 +83,7 @@ export default function Home() {
         <div className="w-full h-fit flex flex-col justify-center items-start gap-[8px]">
           <img src="MainLogo.png" className="w-[60px] h-[60px]" />
           <p className="text-[#202124] font-[600] text-[26px] inter">
-            Join Us!😎
+            Join Us! 😎
           </p>
           <p className="text-[#8E8E8E] text-[18px] ">
             Please provide all current information accurately.
